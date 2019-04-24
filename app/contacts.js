@@ -7,7 +7,7 @@ var lista = new Array();
 var id = 0;
 
 function clicFun() {
-
+    
     var nombre, apellido, telefono;
 
     nombre = $('#nombre').val();
@@ -22,35 +22,45 @@ function clicFun() {
     }
 
     lista.push(usuario);
-    crearTabla(lista, usuario);
+    
+    listarTabla();
     id = id + 1;
     
-    console.log(id);
-    console.log(lista);
     //Falta Limpiar Campos despues de Guardado
+    limpiarCampos();
 }
 
-function crearTabla(array, user) {
+function listarTabla() {
 
-    var data = array;
+    $("#tablebody").html("");
     var user = user
-
-    for (var i = 0; i < data.length; i++) {
-        var tr = $("<tr><td>" + user.nombre + "</td><td>" + user.apellido + "</td><td>" + user.telefono + "</td><td>");
-    }
-
-    $("#tablebody").append(tr);
+    var tr;
+    for (var i = 0; i < lista.length; i++) {
+        if(lista[i]!== undefined){
+         tr = "<tr><td>" + lista[i].nombre + "</td><td>" + lista[i].apellido + "</td><td>" + lista[i].telefono + "</td><td>";
+         $("#tablebody").append(tr);
+        }
+    }    
 }
 
-/*function limpiarCampos() {
-    document.getElementById("form").reset();
-}*/
+function eliminarContacto(id_contacto){
+    for (var i = 0; i < lista.length; i++) {
+        if(lista[i]!== undefined){
+            if (lista[i].id == id_contacto) {
+                delete lista[i];
+            } 
+        }
+    }
+    listarTabla();
+}
+
+function limpiarCampos() {
+    $('#nombre').val("");
+    $('#apellido').val("");
+    $('#num').val("");
+}
 
 // Debes crear un arreglo donde meterlos todos para asi poder identificar cada objeto por individual,
 // y que cada uno de estos tenga su propia ID, cosa que ya fue hecha arriba, luego de meter todos los usuarios
 // en un arreglo debemos hacer que siempre que ocucra algo se vuelva a recargar el arreglo con los cambios
 // y ya, eso hace todo, cuando borren, editen y/o agreguen. 
-
-
-
-
