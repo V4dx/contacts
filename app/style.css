@@ -1,0 +1,18 @@
+.table-borderless thead th {
+    position: sticky;
+    background:white;
+    top:0;
+    color: #5f6368;
+    font-weight: 500;
+}
+
+.bgimg {
+    background-image: url('/Users/diegovargas/Desktop/JS/Contacts/app/src/stars-3840x2160-galaxy-4k-6362.jpg');
+    object-fit: cover;
+    background-repeat: no-repeat; 
+}
+
+.brandFix{
+    align-self: center;
+    display: inline-block;
+}
